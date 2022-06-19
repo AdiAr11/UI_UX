@@ -199,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: (){
           showModalBottomSheet(
               context: context,
-              backgroundColor: Color(0xff252525),
+              backgroundColor: const Color(0xff252525),
               builder: (context) {
                 return bottomSheet(context);
               });
@@ -244,20 +244,44 @@ class _MyHomePageState extends State<MyHomePage> {
     // ),
       bottomNavigationBar: BottomAppBar(
         child: Container(
-          height: 60.0,
+          height: 65.0,
           color: const Color(0xff252525),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Expanded(child: IconButton(icon: const Icon(Icons.wallet, color: Colors.white,),
-                onPressed: (){},),),
-              Expanded(child: IconButton(icon: const Icon(Icons.browse_gallery,color: Colors.white,),
-                onPressed: (){},)),
+              Expanded(
+                child: Column(
+                  children: [
+                    IconButton(icon: const Icon(Icons.wallet, color: Colors.yellow,),
+                    onPressed: (){},),
+                    const Text("Wallet", style: TextStyle(color: Colors.yellow),)
+                  ],
+                ),),
+              Expanded(
+                  child: Column(
+                    children: [
+                      IconButton(icon: const Icon(Icons.image_outlined,color: Colors.white,),
+                onPressed: (){},),
+                      const Text("Gallery", style: TextStyle(color: Colors.white),)
+                    ],
+                  )),
               const Expanded(child: Text('')),
-              Expanded(child: IconButton(icon: const Icon(Icons.tab,color: Colors.white,),
-                  onPressed: (){})),
-              Expanded(child: IconButton(icon: const Icon(Icons.settings,color: Colors.white,),
-                onPressed: (){},),),
+              Expanded(
+                  child: Column(
+                    children: [
+                      IconButton(icon: const Icon(Icons.star_border,color: Colors.white,),
+                      onPressed: (){}),
+                      const Text("Favorites", style: TextStyle(color: Colors.white),)
+                    ],
+                  )),
+              Expanded(
+                child: Column(
+                  children: [
+                    IconButton(icon: const Icon(Icons.settings_outlined,color: Colors.white,),
+                    onPressed: (){},),
+                    const Text("Settings", style: TextStyle(color: Colors.white),)
+                  ],
+                ),),
             ],
           ),
         ),
@@ -284,11 +308,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-        Divider(
+        const Divider(
           color: Colors.white,
           thickness: 1.0,
         ),
-        SizedBox(height: 10.0),
+        const SizedBox(height: 10.0),
         ListTile(
           tileColor: Colors.yellow,
           title: const Text('Price: Lowest to High',
