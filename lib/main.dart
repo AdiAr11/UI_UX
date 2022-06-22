@@ -48,10 +48,14 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Stack(
             children: [
-              Container(
+              AnimatedContainer(
+                duration: const Duration(seconds: 1),
                 height: cardsCount != 0 ?
                 MediaQuery.of(context).size.height * 0.46 : MediaQuery.of(context).size.height * 0.3,
-                color: const Color(0xff252525),
+                curve: Curves.linear,
+                child: Container(
+                  color: const Color(0xff252525),
+                ),
               ),
 
               Container(
@@ -150,49 +154,46 @@ class _MyHomePageState extends State<MyHomePage> {
 
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
               children: [
-                const Text(
-                  "All tokens",
-                  style: TextStyle(color: Colors.white, fontSize: 15.0,
-                      fontWeight: FontWeight.bold),
-                ),
-                GestureDetector(
-                  // behavior: HitTestBehavior,
-                  onTap: (){showSnackBar("Sorting");},
-                  child: Container(
-                    width: 80.0,
-                    height: 30.0,
-                    decoration: BoxDecoration(
-                        color: Colors.yellow,
-                        borderRadius: BorderRadius.circular(8)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "All tokens",
+                      style: TextStyle(color: Colors.white, fontSize: 15.0,
+                          fontWeight: FontWeight.bold),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.sort),
-                        Text(" Sort"),
-                      ],
+                    GestureDetector(
+                      // behavior: HitTestBehavior,
+                      onTap: (){showSnackBar("Sorting");},
+                      child: Container(
+                        width: 80.0,
+                        height: 30.0,
+                        decoration: BoxDecoration(
+                            color: Colors.yellow,
+                            borderRadius: BorderRadius.circular(8)
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(Icons.sort),
+                            Text(" Sort"),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
+                const SizedBox(height: 20.0,),
+                oneTokenRow(),
+                const Divider(color: Colors.grey,height: 40.0,),
+                oneTokenRow(),
+                const Divider(color: Colors.grey,height: 40.0,),
+                oneTokenRow(),
               ],
             ),
           ),
-
-          Padding(
-            padding: const EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
-            child: Column(
-              children: [
-                oneTokenRow(),
-                const Divider(color: Colors.grey,height: 40.0,),
-                oneTokenRow(),
-                const Divider(color: Colors.grey,height: 40.0,),
-                oneTokenRow(),
-              ],
-            ),
-          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -244,7 +245,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // ),
       bottomNavigationBar: BottomAppBar(
         child: Container(
-          height: 65.0,
+          height: 70.0,
           color: const Color(0xff252525),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
